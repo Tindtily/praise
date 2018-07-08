@@ -1,6 +1,8 @@
 language: node_js
 node_js:
 - '8'
-dd:
+before_install:
 - openssl aes-256-cbc -K $encrypted_b127d0edfaa3_key -iv $encrypted_b127d0edfaa3_iv
   -in ssjejs.pem.enc -out ~\/.ssh/ssjejs.pem -d
+after_success:
+- npm run webpackprod && scp -i ~\/.ssh/ssjejs.pem  -r build  root@47.105.106.155:build
