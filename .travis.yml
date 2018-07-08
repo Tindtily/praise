@@ -8,4 +8,5 @@ before_install:
 - echo -e "Host 47.105.106.155\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
 - npm run webpackprod 
+- node_modules/gulp/bin/gulp.js
 - scp -i ssjejs.pem  -r build  root@47.105.106.155:build
