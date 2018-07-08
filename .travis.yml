@@ -5,5 +5,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_b127d0edfaa3_key -iv $encrypted_b127d0edfaa3_iv
   -in ssjejs.pem.enc -out ssjejs.pem -d 
 - chmod 600 ssjejs.pem
+- echo -e "Host 47.105.106.155\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
-- npm run webpackprod && scp -i ssjejs.pem  -r build  root@47.105.106.155:build
+- npm run webpackprod 
+- scp -i ssjejs.pem  -r build  root@47.105.106.155:build
